@@ -140,6 +140,9 @@ The following variables are included in the tidy data set. The measurements are 
 * **MeanFrequencyBodyBodyGyroscopeJerkMagSignalStandardDeviation**: Average, frequency series domain, body gyroscope jerk magnitude standard deviation 
 
 ##**Steps Taken**
+
+The reader of this codebook should be familiar with "R" and therefore the exact R code is provided (and can also be viewed from the source code run_analysis.R). The comment lines (#) provide the descriptions of each step - those unfamiliar with R can read these to understand the steps taken. 
+
 ```
 library(data.table)
 
@@ -182,5 +185,4 @@ colnames(subj.act.measure.means) <- sub("^Freq","MeanFreq",sub("^Time","MeanTime
 
 # Write to a file
 write.table(subj.act.measure.means,file="./subject_activity_measurement_means.txt",row.names=FALSE)
-
 ```
