@@ -14,6 +14,6 @@ This R script (run_analysis.R) uses the Samsung data retreived from: https://d39
 * Label the data set with descriptive variable names. 
 * Create a second, independent tidy data set with the average of each variable for each activity and each subject. 
 
-This script requires the data.table package.
+This script requires the data.table package. It will create a file in your working directory for the tidy data set with the average of each variable for each activity and subject.
 
-This script will create a file in your working directory for the tidy data set with the average of each variable for each activity and subject.
+CodeBook.md is also included and describes the study design, variables, and steps taken for this analysis.

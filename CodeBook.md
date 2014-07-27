@@ -28,23 +28,23 @@ The source data set code book provided the following information relevant to thi
 >These signals were used to estimate variables of the feature vector for each pattern:  
 '-XYZ' is used to denote 3-axial signals in the X, Y and Z directions.
 
->tBodyAcc-XYZ
-tGravityAcc-XYZ
-tBodyAccJerk-XYZ
-tBodyGyro-XYZ
-tBodyGyroJerk-XYZ
-tBodyAccMag
-tGravityAccMag
-tBodyAccJerkMag
-tBodyGyroMag
-tBodyGyroJerkMag
-fBodyAcc-XYZ
-fBodyAccJerk-XYZ
-fBodyGyro-XYZ
-fBodyAccMag
-fBodyAccJerkMag
-fBodyGyroMag
-fBodyGyroJerkMag
+>tBodyAcc-XYZ  
+tGravityAcc-XYZ  
+tBodyAccJerk-XYZ  
+tBodyGyro-XYZ  
+tBodyGyroJerk-XYZ  
+tBodyAccMag  
+tGravityAccMag  
+tBodyAccJerkMag  
+tBodyGyroMag  
+tBodyGyroJerkMag  
+fBodyAcc-XYZ  
+fBodyAccJerk-XYZ  
+fBodyGyro-XYZ  
+fBodyAccMag  
+fBodyAccJerkMag  
+fBodyGyroMag  
+fBodyGyroJerkMag  
 
 >The set of variables that were estimated from these signals are: 
 
@@ -52,7 +52,7 @@ fBodyGyroJerkMag
 std(): Standard deviation  
 ...
 
-The following variables are included in the tidy data set. The measurements are summarized by the subject and activity. 
+The following variables are included in the tidy data set. The measurements are summarized by the subject and activity. All measurements are numeric and normalized between [-1,1]. 
 
 * **Subject**: A sequential number indicating the person for which the activity measurements were taken
 * **Activity**: The activity the person was performing WALKING, WALKING\_UPSTAIRS, WALKING\_DOWNSTAIRS, SITTING, STANDING, LAYING  
@@ -141,7 +141,22 @@ The following variables are included in the tidy data set. The measurements are 
 
 ##**Steps Taken**
 
-The reader of this codebook should be familiar with "R" and therefore the exact R code is provided (and can also be viewed from the source code run_analysis.R). The comment lines (#) provide the descriptions of each step - those unfamiliar with R can read these to understand the steps taken. 
+The reader of this codebook should be familiar with "R" and therefore the exact R code is provided (and can also be viewed from the source code run_analysis.R). 
+
+The steps taken are:  
+
+* Download the file https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip
+* Unzip the files to your working directory.  
+* Read features.txt for the variable name and make them syntactically correct using makes.names()  
+* Later we'll need just the mean() and std() variables, make a list of those now with grep. The make.names function converted the parenthesis to dots (..) so search for mean.. OR std...  
+* Read the reference table for the activity codes and descriptions.  
+* For both the test and train data files: read the activity code file, subject file, and features file (each representing the same number of observationsP) and combine to form test and train data sets.  
+* Combined the rows of both the train and test data tables to form a single, combined data table.  
+* Merge the combined data with the activity reference data to get a descriptive activity description for each observation. Subset the columns to the subject, activity description, and the meean/std variables.  
+* Make the column names readabile by replacing abbreviations and codes with their words forming a Camel column name.  
+* Aggregate the data by subject and activity, calculating the mean for all mean and std variables.  
+* Update the calculated mean column names to reflect that they are means.  
+* Write the table to a text file.  
 
 ```
 library(data.table)
